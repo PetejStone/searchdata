@@ -7,6 +7,7 @@ import './Food.scss'
 const Food = props => {
     const [food, setFood] = useState()
     const [text, setText] = useState('')
+    const [data, setData]= useState(Data)
     const [filter, setFilter] = useState('')
     const [category, setCategory] = useState('')
     const [subcategory, setSubCategory] = useState('')
@@ -24,15 +25,15 @@ const Food = props => {
 
     //state for setting data
     useEffect(() => {
-        setFood({Data});
+        setData(data);
         
-    },[setFood])
+    },[setData])
 
     //state for isolating categories objects
     useEffect(() => {
         let cat = []
         let subCat = []
-        let filter = food && food.Data.items.map(item => {
+        data.items.map(item => {
             
             check[item.id] = item.id
             setDict(check)
@@ -54,18 +55,21 @@ const Food = props => {
             }
         })
         
-    },[food])
+    },[data])
 
 
     useEffect(() => {
         // console.log(filter.toString())
         
-        food && food.Data.items.map(item => 
+        data.items.map(item => 
              {
-                 if (item.title && item.title.toLowerCase().includes(filter)) {
+                 if (item.title && item.title.toLowerCase().includes(filter) && filter !== '') {
                     check[item.id] = item.id
                     setDict(check)
-                 } else if (item.description && item.description.toLowerCase().includes(filter)) {
+                    let items = data.items.filter(item => dict && item.id in dict)
+                    console.log(items)
+                    setData({items})
+                 } else if (item.description && item.description.toLowerCase().includes(filter) && filter !== '') {
                     check[item.id] = item.id
                     setDict(check)
                  } else {
@@ -73,21 +77,24 @@ const Food = props => {
                  }
              }  
         )
-
+    
         category && category.map(item => 
             {
-                if (item.name && item.name.toLowerCase().includes(filter)) {
+                if (item.name && item.name.toLowerCase().includes(filter) && filter !== '') {
+                   console.log('true')
                    check[item.parentId] = item.parentId
                    setDict(check)
                 } else {
+                    console.log('not true')
                     delete dict[item.parentId]
                 }
             }  
        )
 
-       category && category.map(item => 
+       subcategory && subcategory.map(item => 
             {
                 if (item.name && item.name.toLowerCase().includes(filter)) {
+                   console.log('true')
                    check[item.parentId] = item.parentId
                    setDict(check)
                 } else {
@@ -97,7 +104,7 @@ const Food = props => {
        )
        
         
-    },[filter, category, food, subcategory])
+    },[filter, category, data, subcategory])
     
     return (
        <div>
@@ -116,7 +123,7 @@ const Food = props => {
         <button onClick={() => setFilter(text.toLowerCase())}>Filter</button>
     
             <ul className = "items">
-                    {food && food.Data.items.map(item => 
+                    {data.items.map(item => 
                         <li className = "item"> 
                             <h3>{item.title}</h3>
                             <img src={item.img}/>
