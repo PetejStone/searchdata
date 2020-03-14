@@ -7,10 +7,10 @@ import './Food.scss'
 const Food = props => {
     const [food, setFood] = useState()
     const [text, setText] = useState('')
-    const [data, setData]= useState(Data)
     const [filter, setFilter] = useState('')
     const [category, setCategory] = useState('')
     const [subcategory, setSubCategory] = useState('')
+    const [data, setData]= useState(Data)
     let check = {}
     const [dict, setDict] = useState('')
      function handleKeyPress(e) {
@@ -23,8 +23,8 @@ const Food = props => {
         setText(text)
     },[])
 
-    //state for setting data
-    useEffect(() => {
+      //state for setting data
+      useEffect(() => {
         setData(data);
         
     },[setData])
@@ -63,13 +63,10 @@ const Food = props => {
         
         data.items.map(item => 
              {
-                 if (item.title && item.title.toLowerCase().includes(filter) && filter !== '') {
+                 if (item.title && item.title.toLowerCase().includes(filter)) {
                     check[item.id] = item.id
                     setDict(check)
-                    let items = data.items.filter(item => dict && item.id in dict)
-                    console.log(items)
-                    setData({items})
-                 } else if (item.description && item.description.toLowerCase().includes(filter) && filter !== '') {
+                 } else if (item.description && item.description.toLowerCase().includes(filter)) {
                     check[item.id] = item.id
                     setDict(check)
                  } else {
@@ -77,24 +74,21 @@ const Food = props => {
                  }
              }  
         )
-    
+
         category && category.map(item => 
             {
-                if (item.name && item.name.toLowerCase().includes(filter) && filter !== '') {
-                   console.log('true')
+                if (item.name && item.name.toLowerCase().includes(filter)) {
                    check[item.parentId] = item.parentId
                    setDict(check)
                 } else {
-                    console.log('not true')
                     delete dict[item.parentId]
                 }
             }  
        )
 
-       subcategory && subcategory.map(item => 
+       category && category.map(item => 
             {
                 if (item.name && item.name.toLowerCase().includes(filter)) {
-                   console.log('true')
                    check[item.parentId] = item.parentId
                    setDict(check)
                 } else {
