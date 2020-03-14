@@ -1,69 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#How do we run your app? (ex. npm install and then npm start)
 
-## Available Scripts
+1) You may view site at https://filterfood-app.netlify.com/
 
-In the project directory, you can run:
+or
 
-### `yarn start`
+2) clone repo, then type 'npm i' in your console. Once dependencies are installed, run with 'npm start'
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#How long did it take you to complete this assignment (in hours)?
 
-### `yarn build`
+Took me several hours. Two hours Thursday evening, then half of Friday
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+I had my algorithm down, but ran into issues with infinite loops when trying to filter out data's state.
+Rather than filter out state, I opted to filter through the display
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#What did you enjoy the most while working on this assignment?
 
-### `yarn eject`
+I enjoyed the challenge of tackling something new.
+I have a lot of experience with parsing and pulling out data from objects, but not much
+with parsing and filtering data through nested objects.  That is where I found most difficulty.
+Once I had my algorithm, I ran into issues with infinite loops, but finally opted for filtering through 
+the visual end since I already had something to check against. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#What did you learn (if anything) while working on this assignment? (optional)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# searchdata
+I learned one way of filtering through nested object to pull out and display the necessary data 
+based on a user's input.  Although the item list is small and is displayed in linear time 0(n), 
+when checking if each item should be displayed per user input, I was able to check in constant time 0(1) by adding the IDs to an object and checking against that.
