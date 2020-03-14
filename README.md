@@ -27,7 +27,7 @@ the visual end since I already had something to check against.
 
 
 
-#What did you learn (if anything) while working on this assignment? (optional)
+## What did you learn (if anything) while working on this assignment? (optional)
 
 I learned one way of filtering through nested object to pull out and display the necessary data 
 based on a user's input.  Although the item list is small and is displayed in linear time 0(n), 
