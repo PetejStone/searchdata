@@ -1,4 +1,4 @@
-#How do we run your app? (ex. npm install and then npm start)
+# How do we run your app? (ex. npm install and then npm start)
 
 1) You may view site at https://filterfood-app.netlify.com/
 
@@ -9,7 +9,7 @@ or
 
 
 
-#How long did it take you to complete this assignment (in hours)?
+# How long did it take you to complete this assignment (in hours)?
 
 Took me several hours. Two hours Thursday evening, then half of Friday
 
@@ -17,7 +17,7 @@ I had my algorithm down, but ran into issues with infinite loops when trying to 
 Rather than filter out state, I opted to filter through the display
 
 
-#What did you enjoy the most while working on this assignment?
+# What did you enjoy the most while working on this assignment?
 
 I enjoyed the challenge of tackling something new.
 I have a lot of experience with parsing and pulling out data from objects, but not much
