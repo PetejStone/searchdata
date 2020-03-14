@@ -5,12 +5,12 @@ import './Food.scss'
 
 
 const Food = props => {
-    const [food, setFood] = useState()
+    const [isMounted, setIsMounted] = useState(false)
     const [text, setText] = useState('')
     const [filter, setFilter] = useState('')
     const [category, setCategory] = useState('')
     const [subcategory, setSubCategory] = useState('')
-    const [data, setData]= useState(Data)
+    const [data, setData]= useState(Data.items)
     let check = {}
     const [dict, setDict] = useState('')
      function handleKeyPress(e) {
@@ -23,17 +23,27 @@ const Food = props => {
         setText(text)
     },[])
 
+    useEffect(() => {
+        setData(data)
+        setIsMounted(true)
+    })
+
       //state for setting data
       useEffect(() => {
-        setData(data);
+        let items = data.filter(item => dict && item.id in dict)
+        console.log(items)
+        if (isMounted === true) {
+            // setData(data.filter(item => dict && item.id in dict));
+            console.log('mounted', items)
+        }
         
-    },[setData])
+    },[dict, isMounted])
 
     //state for isolating categories objects
     useEffect(() => {
         let cat = []
         let subCat = []
-        data.items.map(item => {
+        data.map(item => {
             
             check[item.id] = item.id
             setDict(check)
@@ -61,7 +71,7 @@ const Food = props => {
     useEffect(() => {
         // console.log(filter.toString())
         
-        data.items.map(item => 
+        data.map(item => 
              {
                  if (item.title && item.title.toLowerCase().includes(filter)) {
                     check[item.id] = item.id
@@ -96,13 +106,14 @@ const Food = props => {
                 }
             }  
        )
+
        
         
-    },[filter, category, data, subcategory])
+    },[filter])
     
     return (
        <div>
-            {console.log(dict)}
+            {console.log(dict, data)}
             <input
             className="filter-items"
             type="text"
@@ -117,7 +128,7 @@ const Food = props => {
         <button onClick={() => setFilter(text.toLowerCase())}>Filter</button>
     
             <ul className = "items">
-                    {data.items.map(item => 
+                    {data.map(item => 
                         <li className = "item"> 
                             <h3>{item.title}</h3>
                             <img src={item.img}/>
